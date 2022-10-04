@@ -6,11 +6,11 @@ DomainGesture(
     chart: () -> View
 )
 ```
-This library contains `DomainGesture` view builder which uses `.chartXScale(domain:)` modifier,
-in combination with `UIKit` based gesture overlay to control the `Chart`'s domain.
+`DomainGesture` view builder uses `.chartXScale(domain:)` modifier,
+in combination with `UIKit` based gesture overlay to control the `Chart`'s horizontal domain.
 
 ### Preview
-https://user-images.githubusercontent.com/28978251/193824334-abdc4055-6305-4bbb-a184-1e22d6996330.mov
+https://user-images.githubusercontent.com/28978251/193827937-6f1fd1a8-692a-48d7-acb9-a3aba8718aec.mp4
 
 ### Usage Example
 ```swift
