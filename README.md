@@ -43,7 +43,7 @@ struct ChartView: View {
                     x: .value("X", $0.x),
                     y: .value("Y", $0.y)
                 )
-            }
+            }.chartXScale(domain: domain)
         }.padding()
     }
 }

@@ -2,12 +2,14 @@ import SwiftUI
 
 struct Overlay: UIViewRepresentable {
 	@Binding var domain: ClosedRange<Double>
+	let onEnded: () -> ()
+	
 	@State private var leading: Double?
 	@State private var leadingValue: Double?
 	@State private var trailingValue: Double?
 	
 	func makeUIView(context: Context) -> UIView {
-		GestureView() {
+		View() {
 			switch $0 {
 			case .pan(let x, let isInitial):
 				if isInitial { leading = x }
@@ -28,6 +30,8 @@ struct Overlay: UIViewRepresentable {
 					let b = leadingValue - m * leadingX
 					domain = b...b + m
 				}
+			case nil:
+				onEnded()
 			}
 		}
 	}

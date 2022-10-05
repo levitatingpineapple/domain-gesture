@@ -34,13 +34,19 @@ class DomainGestureRecognizer: UIGestureRecognizer {
 	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
 		retainedTouches = retainedTouches.subtracting(touches)
-		if retainedTouches.isEmpty { state = .ended; interaction = nil }
+		if retainedTouches.isEmpty {
+			interaction = nil
+			state = .ended
+		}
 		else { setInteraction(isInitial: true) }
 	}
 	
 	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
 		retainedTouches = retainedTouches.subtracting(touches)
-		if retainedTouches.isEmpty { state = .cancelled; interaction = nil }
+		if retainedTouches.isEmpty {
+			interaction = nil
+			state = .cancelled
+		}
 		else { setInteraction(isInitial: true) }
 	}
 	

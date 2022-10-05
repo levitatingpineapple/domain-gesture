@@ -3,13 +3,14 @@ import Charts
 
 public struct DomainGesture<C: View>: View {
 	@Binding var domain: ClosedRange<Double>
+	let onEnded: () -> Void
 	@ViewBuilder var chart: () -> C
+	
 	@State private var plotSize: CGSize?
 
 	public var body: some View {
 		ZStack(alignment: .topLeading) {
 			chart()
-				.chartXScale(domain: domain)
 				.chartPlotStyle {
 					$0.background(
 						GeometryReader {
@@ -20,7 +21,7 @@ public struct DomainGesture<C: View>: View {
 						}
 					)
 				}
-			Overlay(domain: $domain)
+			Overlay(domain: $domain, onEnded: onEnded)
 				.frame(
 					maxWidth: plotSize?.width,
 					maxHeight: plotSize?.height
@@ -39,6 +40,7 @@ extension DomainGesture {
 extension DomainGesture {
 	public init(
 		_ domain: Binding<ClosedRange<Double>>,
+		onEnded: @escaping () -> Void = { },
 		chart: @escaping () -> C
-	) { self.init(domain: domain, chart: chart) }
+	) { self.init(domain: domain, onEnded: onEnded, chart: chart) }
 }
