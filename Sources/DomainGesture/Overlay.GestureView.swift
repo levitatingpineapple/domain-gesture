@@ -1,13 +1,12 @@
 import SwiftUI
 
 extension Overlay {
-	class View: UIView, UIGestureRecognizerDelegate {
+	class View: UIView {
 		let perform: (DomainGestureRecognizer.Interaction?) -> Void
 		
 		init(perform: @escaping (DomainGestureRecognizer.Interaction?) -> Void) {
 			self.perform = perform
 			super.init(frame: .zero)
-			backgroundColor = .clear
 			let recognzer = DomainGestureRecognizer(
 				target: self,
 				action: #selector(handle)
@@ -26,10 +25,12 @@ extension Overlay {
 			}
 			
 		}
-		
-		func gestureRecognizer(
-			_: UIGestureRecognizer,
-			shouldRecognizeSimultaneouslyWith: UIGestureRecognizer
-		) -> Bool { true }
 	}
+}
+
+extension Overlay.View: UIGestureRecognizerDelegate {
+	func gestureRecognizer(
+		_: UIGestureRecognizer,
+		shouldRecognizeSimultaneouslyWith: UIGestureRecognizer
+	) -> Bool { true }
 }
