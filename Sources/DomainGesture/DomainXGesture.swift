@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 18.0, *)
 public struct DomainXGesture<Bound: ExpressibleByDouble>: UIGestureRecognizerRepresentable {
 	@Binding var domain: ClosedRange<Bound>
 	let simultaneous: Bool

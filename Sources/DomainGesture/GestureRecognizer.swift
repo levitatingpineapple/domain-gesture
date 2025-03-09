@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 18.0, *)
 extension DomainXGesture {
 	public class GestureRecognizer: UIGestureRecognizer, UIGestureRecognizerDelegate {
 		enum Interaction {
